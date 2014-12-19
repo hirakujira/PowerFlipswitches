@@ -1,0 +1,8 @@
+.DS_Store
+.idea/*
+obj/*
+_/*
+/PFSReboot/obj/*
+/PFSRespring/obj/*
+/PFSSafemode/obj/*
+/PFSShutdown/obj/*
