@@ -10,8 +10,6 @@ This is a set of flipswitch toggles, which includes:
 
 I just use the code of [Flipswitch Respring](https://github.com/a3tweaks/Flipswitch/tree/master/Switches/Respring "Flipswitch") and separate it to these toggles.
 
-<br>
-
 
 ### References
 [Flipswitch](https://github.com/a3tweaks/Flipswitch "Flipswitch")
