@@ -11,4 +11,4 @@ SUBPROJECTS += PFSSafemode
 include $(THEOS_MAKE_PATH)/aggregate.mk
 
 sync: stage
-	rsync -e "ssh -p 2222" -z -r _/Library/Switches/* root@127.0.0.1:/Library/Switches/
+	rsync -e "ssh -p 2222" -z -r .theos/_/Library/Switches/* root@127.0.0.1:/Library/Switches/

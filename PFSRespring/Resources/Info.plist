@@ -26,7 +26,5 @@
 	<string>3.0</string>
 	<key>NSPrincipalClass</key>
 	<string>PFSRespring</string>
-	<key>alternate-action-url</key>
-	<string>prefs:</string>
 </dict>
 </plist>
