@@ -17,7 +17,16 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex != [alertView cancelButtonIndex])
-        [(SpringBoard *)[%c(SpringBoard) sharedApplication] _relaunchSpringBoardNow];
+    if (buttonIndex != [alertView cancelButtonIndex]) {
+    	if (kCFCoreFoundationVersionNumber > 1241.11) //iOS 9.1+ 
+    	{
+        	system("/bin/launchctl stop com.apple.backboardd");
+			sleep(1);
+			system("/usr/bin/killall backboardd SpringBoard");
+    	}
+        else {
+        	[(SpringBoard *)[%c(SpringBoard) sharedApplication] _relaunchSpringBoardNow];
+        }
+    }
 }
 @end
