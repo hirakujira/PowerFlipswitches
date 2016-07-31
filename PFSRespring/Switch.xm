@@ -8,6 +8,15 @@
 - (void)powerDown;
 @end
 
+@interface FBSystemApp : NSObject
++ (id)sharedApplication;
+- (void)sendActionsToBackboard:(NSSet *)actions;
+@end
+
+@interface BKSRestartAction : NSObject
++ (id)actionWithOptions:(NSInteger)options;
+@end
+
 @interface PFSRespring : NSObject <FSSwitchDataSource, UIAlertViewDelegate>
 @end
 
@@ -18,15 +27,13 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex != [alertView cancelButtonIndex]) {
-    	if (kCFCoreFoundationVersionNumber > 1241.11) //iOS 9.1+ 
-    	{
-        	system("/bin/launchctl stop com.apple.backboardd");
-			sleep(1);
-			system("/usr/bin/killall backboardd SpringBoard");
-    	}
-        else {
-        	[(SpringBoard *)[%c(SpringBoard) sharedApplication] _relaunchSpringBoardNow];
+        SpringBoard *sb = (SpringBoard *)[%c(SpringBoard) sharedApplication];
+        if ([sb respondsToSelector:@selector(relaunchSpringBoard)]) {
+            [sb _relaunchSpringBoardNow];
         }
+    	else {
+        	[(FBSystemApp *)[objc_getClass("FBSystemApp") sharedApplication] sendActionsToBackboard:[NSSet setWithObject:[objc_getClass("BKSRestartAction") actionWithOptions:1]]];
+    	}	
     }
 }
 @end
