@@ -1,5 +1,5 @@
-ARCHS = armv7 arm64
-TARGET = iphone:clang::
+ARCHS = armv7 armv7s arm64
+TARGET = iphone:clang::6.0
 include theos/makefiles/common.mk
 
 TWEAK_NAME = PowerFlipswitches
@@ -7,6 +7,7 @@ SUBPROJECTS += PFSRespring
 SUBPROJECTS += PFSReboot
 SUBPROJECTS += PFSShutdown
 SUBPROJECTS += PFSSafemode
+SUBPROJECTS += PFSKillBackboard
 
 include $(THEOS_MAKE_PATH)/aggregate.mk
 
